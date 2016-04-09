@@ -210,8 +210,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fullbodyButton: {fileID: 11478540}
   bodyPartButton: {fileID: 11422248}
-  bodyUIPrefab: {fileID: 0}
-  bodyPartUIPrefab: {fileID: 0}
+  bodyUIPrefab: {fileID: 150322, guid: ca80f55aae077e74d9bece25cf11c1e2, type: 2}
+  bodyPartUIPrefab: {fileID: 142906, guid: ae365e9f9faf5244189c5c88fbd9ae5f, type: 2}
+  NetworkObject: {fileID: 165296, guid: b513450c9586e4627887a63915d481b1, type: 2}
 --- !u!114 &11478540
 MonoBehaviour:
   m_ObjectHideFlags: 1

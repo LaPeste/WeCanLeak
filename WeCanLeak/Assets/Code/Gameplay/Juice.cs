@@ -4,10 +4,10 @@ using System.Collections;
 
 public enum JuiceType
 {
-	Blood,
+	Phlegm,
 	YellowBile,
 	BlackBile,
-	Phlegm
+	Blood
 }
 
 [Serializable]
