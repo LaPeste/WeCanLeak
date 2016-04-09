@@ -29,7 +29,7 @@ public class BodyTimeController : MonoBehaviour {
 
 		if (Time.realtimeSinceStartup - lastTime >= 1f) {
 			lastTime = Time.realtimeSinceStartup;
-			targetColor = new Color(Random.Range(0f,1f), Random.Range(0f,1f), Random.Range(0f,1f), 1);
+			targetColor = new Color(Random.Range(0f,0.2f), Random.Range(0f,0.2f), Random.Range(0.5f,1f), 1);
 		}
 
 		text.color = Color.Lerp (text.color, targetColor, Time.realtimeSinceStartup - lastTime);
