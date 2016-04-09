@@ -39,16 +39,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa6c6eecf107243a0bfde155b32cfd81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CastDevicesUpdatedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Google.Cast.RemoteDisplay.CastRemoteDisplayEvent, Assembly-CSharp-firstpass,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  RemoteDisplaySessionStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Google.Cast.RemoteDisplay.CastRemoteDisplayEvent, Assembly-CSharp-firstpass,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  RemoteDisplaySessionEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Google.Cast.RemoteDisplay.CastRemoteDisplayEvent, Assembly-CSharp-firstpass,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  RemoteDisplayErrorEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Google.Cast.RemoteDisplay.CastRemoteDisplayEvent, Assembly-CSharp-firstpass,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   remoteDisplayCamera: {fileID: 0}
-  remoteDisplayRenderTexture: {fileID: 0}
+  remoteDisplayTexture: {fileID: 0}
+  remoteDisplayPausedTexture: {fileID: 0}
   remoteAudioListener: {fileID: 0}
   castAppId: 
   configuration:
     resolution: 720
     frameRate: 60
-    targetDelay: 100
-    audioBitrate: 128000
-    videoBitrate: 3000000
+    disableAdaptiveVideoBitrate: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
