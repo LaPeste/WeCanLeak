@@ -19,7 +19,7 @@ public class CameraStuff : MonoBehaviour {
 		if (Time.realtimeSinceStartup - lastUpdated >= 1f) {
 			lastUpdated = Time.realtimeSinceStartup;
 
-			rndColor = new Color(Random.Range(0f,1f), Random.Range(0f,1f), Random.Range(0f,1f), 1);
+			rndColor = new Color(Random.Range(0.5f,1f), Random.Range(0.1f,0.5f), Random.Range(0f,0.2f), 1);
 
 		}
 

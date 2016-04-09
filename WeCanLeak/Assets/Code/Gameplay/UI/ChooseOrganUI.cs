@@ -28,6 +28,7 @@ public class ChooseOrganUI : MonoBehaviour {
 	{
 		OrganUI organui = Instantiate <GameObject>(organUIPrefab).GetComponent<OrganUI>();
 		organui.transform.parent = transform.parent;
+		organui.transform.localScale = Vector3.one;
 		organui.GetComponent<RectTransform> ().offsetMin = new Vector2 (0, 0);
 		organui.GetComponent<RectTransform> ().offsetMax = new Vector2 (0, 0);
 		organui.Initialize (0);
@@ -38,6 +39,7 @@ public class ChooseOrganUI : MonoBehaviour {
 	{
 		OrganUI organui = Instantiate <GameObject>(organUIPrefab).GetComponent<OrganUI>();
 		organui.transform.parent = transform.parent;
+		organui.transform.localScale = Vector3.one;
 		organui.GetComponent<RectTransform> ().offsetMin = new Vector2 (0, 0);
 		organui.GetComponent<RectTransform> ().offsetMax = new Vector2 (0, 0);
 		organui.Initialize (1);
@@ -48,6 +50,7 @@ public class ChooseOrganUI : MonoBehaviour {
 	{
 		OrganUI organui = Instantiate <GameObject>(organUIPrefab).GetComponent<OrganUI>();
 		organui.transform.parent = transform.parent;
+		organui.transform.localScale = Vector3.one;
 		organui.GetComponent<RectTransform> ().offsetMin = new Vector2 (0, 0);
 		organui.GetComponent<RectTransform> ().offsetMax = new Vector2 (0, 0);
 		organui.Initialize (2);
@@ -58,6 +61,7 @@ public class ChooseOrganUI : MonoBehaviour {
 	{
 		OrganUI organui = Instantiate <GameObject>(organUIPrefab).GetComponent<OrganUI>();
 		organui.transform.parent = transform.parent;
+		organui.transform.localScale = Vector3.one;
 		organui.GetComponent<RectTransform> ().offsetMin = new Vector2 (0, 0);
 		organui.GetComponent<RectTransform> ().offsetMax = new Vector2 (0, 0);
 		organui.Initialize (3);
