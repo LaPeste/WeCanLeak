@@ -43,15 +43,19 @@ public class StartScreenUI : MonoBehaviour {
 
 	private void OnFullBodyClicked()
 	{
-//		Instantiate (bodyUIPrefab);
+		GameObject newUI = Instantiate<GameObject> (bodyUIPrefab);
+		newUI.transform.SetParent (transform.parent);
+		newUI.GetComponent<RectTransform> ().offsetMin = new Vector2 (0, 0);
+		newUI.GetComponent<RectTransform> ().offsetMax = new Vector2 (0, 0);
 		Destroy (gameObject);
-
-
 	}
 
 	private void OnBodyPartClicked()
 	{
-//		Instantiate (bodyUIPrefab);
-		Destroy (bodyPartUIPrefab);
+		GameObject newUI = Instantiate<GameObject> (bodyPartUIPrefab);
+		newUI.transform.SetParent (transform.parent);
+		newUI.GetComponent<RectTransform> ().offsetMin = new Vector2 (0, 0);
+		newUI.GetComponent<RectTransform> ().offsetMax = new Vector2 (0, 0);
+		Destroy (gameObject);
 	}
 }
