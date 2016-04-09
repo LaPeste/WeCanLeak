@@ -37,7 +37,7 @@ public class NetworkSetup : Photon.PunBehaviour {
 //		foreach(Component c in ListToAdd)
 //		{
 		Component t = gameObject.GetComponent<UpdateDataBidirectional> ();
-		photonView.ObservedComponents.Add (t);
+		//photonView.ObservedComponents.Add (t);
 //		}
 	}
 	
