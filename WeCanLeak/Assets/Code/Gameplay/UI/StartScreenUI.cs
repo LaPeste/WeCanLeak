@@ -45,6 +45,7 @@ public class StartScreenUI : MonoBehaviour {
 	{
 		GameObject newUI = Instantiate<GameObject> (bodyUIPrefab);
 		newUI.transform.SetParent (transform.parent);
+		newUI.transform.localScale = Vector3.one;
 		newUI.GetComponent<RectTransform> ().offsetMin = new Vector2 (0, 0);
 		newUI.GetComponent<RectTransform> ().offsetMax = new Vector2 (0, 0);
 		Destroy (gameObject);
