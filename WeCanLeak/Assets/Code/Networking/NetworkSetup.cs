@@ -1,16 +1,44 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using Photon;
 
 public class NetworkSetup : Photon.PunBehaviour {
-	public int x,y;
+
+//	public List<Component> ListToAdd;
 	// Use this for initialization
-	void Start () {
+
+	public UpdateDataBidirectional CommunicationScript
+	{
+		get
+		{
+			if(communicationScript != null)
+			{
+				return communicationScript;
+			}
+			else
+			{
+				return null;
+			}
+		}
+	}
+
+	private UpdateDataBidirectional communicationScript;
+
+	void Start ()
+	{
 		if (PhotonNetwork.connected || PhotonNetwork.connecting)
 		{
 			PhotonNetwork.Disconnect();
 		}
+		communicationScript = gameObject.GetComponent<UpdateDataBidirectional>();
 		PhotonNetwork.ConnectUsingSettings("v1.0");
+
+//		foreach(Component c in ListToAdd)
+//		{
+		Component t = gameObject.GetComponent<UpdateDataBidirectional> ();
+		photonView.ObservedComponents.Add (t);
+//		}
 	}
 	
 	// Update is called once per frame

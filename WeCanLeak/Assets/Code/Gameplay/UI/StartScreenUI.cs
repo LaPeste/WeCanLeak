@@ -10,6 +10,25 @@ public class StartScreenUI : MonoBehaviour {
 	public GameObject bodyUIPrefab;
 	public GameObject bodyPartUIPrefab;
 
+	public GameObject NetworkObject;
+
+	private NetworkSetup networkScript;
+
+	private int bodyPartTestValue = 0;
+	private int bodyFullTestValue = -1;
+
+	void Start()
+	{
+		if (NetworkObject != null)
+		{
+			networkScript = NetworkObject.GetComponent<NetworkSetup> ();
+		}
+		else
+		{
+			Debug.LogError ("You haven't assigned NetworkObject!!");
+		}
+	}
+
 	private void OnEnable()
 	{
 		fullbodyButton.onClick.AddListener (OnFullBodyClicked);
@@ -24,13 +43,19 @@ public class StartScreenUI : MonoBehaviour {
 
 	private void OnFullBodyClicked()
 	{
-		Instantiate (bodyUIPrefab);
+		GameObject newUI = Instantiate<GameObject> (bodyUIPrefab);
+		newUI.transform.SetParent (transform.parent);
+		newUI.GetComponent<RectTransform> ().offsetMin = new Vector2 (0, 0);
+		newUI.GetComponent<RectTransform> ().offsetMax = new Vector2 (0, 0);
 		Destroy (gameObject);
 	}
 
 	private void OnBodyPartClicked()
 	{
-		Instantiate (bodyPartUIPrefab);
+		GameObject newUI = Instantiate<GameObject> (bodyPartUIPrefab);
+		newUI.transform.SetParent (transform.parent);
+		newUI.GetComponent<RectTransform> ().offsetMin = new Vector2 (0, 0);
+		newUI.GetComponent<RectTransform> ().offsetMax = new Vector2 (0, 0);
 		Destroy (gameObject);
 	}
 }
