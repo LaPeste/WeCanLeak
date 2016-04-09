@@ -1,16 +1,65 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Photon;
 
-public class NetworkSetup : MonoBehaviour {
-
+public class NetworkSetup : Photon.PunBehaviour {
+	public int x,y;
 	// Use this for initialization
 	void Start () {
-		PhotonNetwork.ConnectUsingSettings("v4.2");
-
+		if (PhotonNetwork.connected || PhotonNetwork.connecting)
+		{
+			PhotonNetwork.Disconnect();
+		}
+		PhotonNetwork.ConnectUsingSettings("v1.0");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (PhotonNetwork.Friends != null && PhotonNetwork.Friends.Count > 0)
+		{
+			foreach(FriendInfo info in PhotonNetwork.Friends)
+			{
+				Debug.Log(info.Name);
+			}
+		}
+	}
+
+	public override void OnConnectedToMaster ()
+	{
+		base.OnConnectedToMaster ();
+		Debug.Log ("Connected to master!");	
+		RoomOptions roomOptions = new RoomOptions() { isVisible = false, maxPlayers = 4 };
+		PhotonNetwork.JoinOrCreateRoom("defaultRoom", roomOptions, TypedLobby.Default);
+	}
+
+	public override void OnJoinedLobby()
+	{
+		base.OnJoinedLobby ();
+		Debug.Log ("Lobby joined!");
+	}
+	 
+	public override void OnPhotonInstantiate (PhotonMessageInfo info)
+	{
+		base.OnPhotonInstantiate (info);
+		Debug.Log ("Photon instantiated!");
+	}
+
+	public override void OnPhotonPlayerConnected (PhotonPlayer newPlayer)
+	{
+		base.OnPhotonPlayerConnected (newPlayer);
+		Debug.Log ("Client connected to server!");
+	}
+
+	void OnGUI()
+	{
+		GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
+		foreach (RoomInfo game in PhotonNetwork.GetRoomList())
+		{
+			GUILayout.Label(game.name + " " + game.playerCount + "/" + game.maxPlayers);
+		} 
+		GUILayout.Label("Player count = " + PhotonNetwork.countOfPlayers);
+		GUILayout.Label("Rooms count = " + PhotonNetwork.countOfRooms);
+		GUILayout.Label("Player count in room = " + PhotonNetwork.countOfPlayersInRooms);
+		GUILayout.Label("Player count on Master = " + PhotonNetwork.countOfPlayersOnMaster	);
 	}
 }
