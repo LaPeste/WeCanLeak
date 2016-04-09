@@ -27,6 +27,7 @@ public class ChooseOrganUI : MonoBehaviour {
 	private void OnOrgan1Click()
 	{
 		OrganUI organui = Instantiate <GameObject>(organUIPrefab).GetComponent<OrganUI>();
+		organui.transform.parent = transform.parent;
 		organui.Initialize (0);
 		Destroy (gameObject);
 	}
@@ -34,6 +35,7 @@ public class ChooseOrganUI : MonoBehaviour {
 	private void OnOrgan2Click()
 	{
 		OrganUI organui = Instantiate <GameObject>(organUIPrefab).GetComponent<OrganUI>();
+		organui.transform.parent = transform.parent;
 		organui.Initialize (1);
 		Destroy (gameObject);
 	}
@@ -41,6 +43,7 @@ public class ChooseOrganUI : MonoBehaviour {
 	private void OnOrgan3Click()
 	{
 		OrganUI organui = Instantiate <GameObject>(organUIPrefab).GetComponent<OrganUI>();
+		organui.transform.parent = transform.parent;
 		organui.Initialize (2);
 		Destroy (gameObject);
 	}
@@ -48,6 +51,7 @@ public class ChooseOrganUI : MonoBehaviour {
 	private void OnOrgan4Click()
 	{
 		OrganUI organui = Instantiate <GameObject>(organUIPrefab).GetComponent<OrganUI>();
+		organui.transform.parent = transform.parent;
 		organui.Initialize (3);
 		Destroy (gameObject);
 	}
