@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class BodyController : MonoBehaviour {
@@ -6,6 +7,8 @@ public class BodyController : MonoBehaviour {
 	public Dictionary<JuiceType, int> juicePool = new Dictionary<JuiceType, int>();
 
 	public List<Color> pureJuiceColors;
+
+	public Image tubes;
 
 	public void AddToPool(JuiceType juiceType, int amount)
 	{
@@ -34,12 +37,17 @@ public class BodyController : MonoBehaviour {
 
 	public Color GetPoolColor()
 	{
-		Color ret = Color.clear;
+		Color ret = Color.black;
 
 		foreach (KeyValuePair<JuiceType, int> juice in juicePool) {
 			ret += pureJuiceColors[(int)juice.Key] * (juice.Value / 100);
 		}
 
 		return ret;
+	}
+
+	private void Update()
+	{
+		tubes.color = GetPoolColor ();
 	}
 }
