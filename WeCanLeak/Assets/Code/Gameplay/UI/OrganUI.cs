@@ -80,22 +80,22 @@ public class OrganUI : MonoBehaviour {
 
 	//==================================================================
 	
-	private void OnJuice1Clicked()
+	public void OnJuice1Clicked()
 	{
 		CalculateJuices(phlegmIndex, liquid1);
 	}
 
-	private void OnJuice2Clicked()
+	public void OnJuice2Clicked()
 	{
 		CalculateJuices(yellowIndex, liquid2);
 	}
 
-	private void OnJuice3Clicked()
+	public void OnJuice3Clicked()
 	{
 		CalculateJuices(blackIndex, liquid3);
 	}
 
-	private void OnJuice4Clicked()
+	public void OnJuice4Clicked()
 	{
 		CalculateJuices(bloodIndex, liquid4);
 	}

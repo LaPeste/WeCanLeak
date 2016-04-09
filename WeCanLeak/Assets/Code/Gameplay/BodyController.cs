@@ -10,6 +10,8 @@ public class BodyController : MonoBehaviour {
 
 	public Image tubes;
 
+	public BodyUI bodyui;
+
 	public void AddToPool(JuiceType juiceType, int amount)
 	{
 		if (!juicePool.ContainsKey (juiceType))
@@ -53,14 +55,20 @@ public class BodyController : MonoBehaviour {
 
 	public void OrganHealthUpdated(OrganType organ, int health)
 	{
-		
+		// TODO
 	}
 	
 	public void OrganReleaseJuice(OrganType organ, JuiceType juice, int amount)
 	{
+		AddToPool(juice, amount);
+
+		bodyui.HighlightOrgan (organ);
 	}
 	
 	public void OrganRequestJuice(OrganType organ, JuiceType juice, int amount)
 	{
+		RemoveFromPool (juice, amount);
+
+		bodyui.HighlightOrgan (organ);
 	}
 }

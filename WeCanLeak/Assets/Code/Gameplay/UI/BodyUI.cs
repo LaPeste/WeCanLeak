@@ -16,6 +16,7 @@ public class BodyUI : MonoBehaviour {
 	private void OnEnable()
 	{
 		controller = GetComponent<BodyController> ();
+		organHighlightTimes = new Dictionary<OrganType, float> ();
 	}
 
 	public void HighlightOrgan(OrganType organ)

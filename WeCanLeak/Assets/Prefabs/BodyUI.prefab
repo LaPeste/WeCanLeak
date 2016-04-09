@@ -568,7 +568,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e181043d904bb8747aa533d11332814a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  organObjects: []
+  organObjects:
+  - {fileID: 11484042}
+  - {fileID: 11483936}
+  - {fileID: 11454266}
+  - {fileID: 11420332}
+  fadeTime: .5
+  displayTime: 1
 --- !u!114 &11463024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -677,6 +683,7 @@ MonoBehaviour:
   - {r: .270588249, g: .152941182, b: .0470588244, a: 1}
   - {r: .874509811, g: 0, b: 0, a: 1}
   tubes: {fileID: 11421846}
+  bodyui: {fileID: 11462750}
 --- !u!114 &11483936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1167,6 +1174,10 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: organObjects.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
@@ -1190,6 +1201,34 @@ Prefab:
       propertyPath: m_Pivot.y
       value: .5
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 11484042}
+    - target: {fileID: 0}
+      propertyPath: organObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 11483936}
+    - target: {fileID: 0}
+      propertyPath: organObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 11454266}
+    - target: {fileID: 0}
+      propertyPath: organObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 11420332}
+    - target: {fileID: 0}
+      propertyPath: fadeTime
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: displayTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bodyui
+      value: 
+      objectReference: {fileID: 11462750}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 150322}
