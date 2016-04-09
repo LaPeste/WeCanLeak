@@ -242,6 +242,9 @@ namespace Google.Cast.RemoteDisplay.UI {
       isCasting = true;
       HideAll();
       castButtonFrame.ShowCasting();
+	
+			GameObject.FindObjectOfType<CastRemoteDisplayManager> ().RemoteDisplayCamera = Camera.main;
+
     }
 
     /**
@@ -250,6 +253,9 @@ namespace Google.Cast.RemoteDisplay.UI {
     public void OnRemoteDisplaySessionEnd(CastRemoteDisplayManager manager) {
       isCasting = false;
       castButtonFrame.ShowNotCasting();
+
+			GameObject.FindObjectOfType<CastRemoteDisplayManager> ().RemoteDisplayCamera = null;
+			GameObject.FindObjectOfType<Camera> ().enabled = true;
     }
 
     /**
