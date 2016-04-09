@@ -13,6 +13,7 @@ public enum OrganType
 [Serializable]
 public class Organ {
 
+	public JuiceType producer;
 	public OrganType organType;
 	public int health = 100; // 0-100 for alive
 
