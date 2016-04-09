@@ -50,4 +50,17 @@ public class BodyController : MonoBehaviour {
 	{
 		tubes.color = GetPoolColor ();
 	}
+
+	public void OrganHealthUpdated(OrganType organ, int health)
+	{
+		
+	}
+	
+	public void OrganReleaseJuice(OrganType organ, JuiceType juice, int amount)
+	{
+	}
+	
+	public void OrganRequestJuice(OrganType organ, JuiceType juice, int amount)
+	{
+	}
 }
