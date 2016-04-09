@@ -10,6 +10,25 @@ public class StartScreenUI : MonoBehaviour {
 	public GameObject bodyUIPrefab;
 	public GameObject bodyPartUIPrefab;
 
+	public GameObject NetworkObject;
+
+	private NetworkSetup networkScript;
+
+	private int bodyPartTestValue = 0;
+	private int bodyFullTestValue = -1;
+
+	void Start()
+	{
+		if (NetworkObject != null)
+		{
+			networkScript = NetworkObject.GetComponent<NetworkSetup> ();
+		}
+		else
+		{
+			Debug.LogError ("You haven't assigned NetworkObject!!");
+		}
+	}
+
 	private void OnEnable()
 	{
 		fullbodyButton.onClick.AddListener (OnFullBodyClicked);
@@ -24,13 +43,15 @@ public class StartScreenUI : MonoBehaviour {
 
 	private void OnFullBodyClicked()
 	{
-		Instantiate (bodyUIPrefab);
+//		Instantiate (bodyUIPrefab);
 		Destroy (gameObject);
+
+
 	}
 
 	private void OnBodyPartClicked()
 	{
-		Instantiate (bodyUIPrefab);
+//		Instantiate (bodyUIPrefab);
 		Destroy (bodyPartUIPrefab);
 	}
 }
