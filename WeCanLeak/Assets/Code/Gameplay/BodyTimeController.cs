@@ -25,7 +25,8 @@ public class BodyTimeController : MonoBehaviour {
 
 	void Update()
 	{
-		text.text = (Time.realtimeSinceStartup - timeStarted).ToString("00") + " seconds";
+		if(!gameover)
+			text.text = (Time.realtimeSinceStartup - timeStarted).ToString("00") + " seconds";
 
 		if (Time.realtimeSinceStartup - lastTime >= 1f) {
 			lastTime = Time.realtimeSinceStartup;
@@ -46,5 +47,6 @@ public class BodyTimeController : MonoBehaviour {
 	public void GameOver()
 	{
 		gameover = true;
+		Destroy (GameObject.FindObjectOfType<QuoteController> ());
 	}
 }
