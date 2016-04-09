@@ -10,9 +10,16 @@ public class OrganUI : MonoBehaviour {
 	public Button juice4;
 	private Organ organ;
 
+	private int selectedOrgan;
+
+	public void Initialize(int selectedOrgan)
+	{
+		this.selectedOrgan = selectedOrgan;
+	}
+
 	private void OnEnable()
 	{
-		organ = Resources.Load<GameObject> ("OrganSettings").GetComponent<OrganSettings>().organs[0];
+		organ = Resources.Load<GameObject> ("OrganSettings").GetComponent<OrganSettings>().organs[selectedOrgan];
 
 		juice1.onClick.AddListener (OnJuice1Clicked);
 		juice2.onClick.AddListener (OnJuice2Clicked);
