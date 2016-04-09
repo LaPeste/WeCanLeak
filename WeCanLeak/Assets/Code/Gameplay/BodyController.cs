@@ -5,6 +5,8 @@ public class BodyController : MonoBehaviour {
 
 	public Dictionary<JuiceType, int> juicePool = new Dictionary<JuiceType, int>();
 
+	public List<Color> pureJuiceColors;
+
 	public void AddToPool(JuiceType juiceType, int amount)
 	{
 		if (!juicePool.ContainsKey (juiceType))
@@ -28,5 +30,16 @@ public class BodyController : MonoBehaviour {
 		if (!juicePool.ContainsKey (juiceType))
 			return 0;
 		return juicePool [juiceType];
+	}
+
+	public Color GetPoolColor()
+	{
+		Color ret = Color.clear;
+
+		foreach (KeyValuePair<JuiceType, int> juice in juicePool) {
+			ret += pureJuiceColors[(int)juice.Key] * (juice.Value / 100);
+		}
+
+		return ret;
 	}
 }
