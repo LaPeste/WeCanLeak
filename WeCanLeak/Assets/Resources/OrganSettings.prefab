@@ -41,21 +41,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   organs:
   - producer: 0
+    organType: 3
+    health: 50
+    juices:
+    - type: 1
+      amount: 50
+    - type: 2
+      amount: 50
+    - type: 3
+      amount: 50
+  - producer: 1
+    organType: 1
+    health: 50
+    juices:
+    - type: 2
+      amount: 50
+    - type: 0
+      amount: 50
+    - type: 3
+      amount: 50
+  - producer: 2
+    organType: 2
+    health: 50
+    juices:
+    - type: 3
+      amount: 50
+    - type: 0
+      amount: 50
+    - type: 1
+      amount: 50
+  - producer: 3
     organType: 0
-    health: 100
-    juices: []
-  - producer: 0
-    organType: 0
-    health: 100
-    juices: []
-  - producer: 0
-    organType: 0
-    health: 100
-    juices: []
-  - producer: 0
-    organType: 0
-    health: 100
-    juices: []
+    health: 50
+    juices:
+    - type: 0
+      amount: 50
+    - type: 1
+      amount: 50
+    - type: 2
+      amount: 50
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -64,20 +88,148 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: organs.Array.data[0].juices.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organs.Array.data[1].juices.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organs.Array.data[2].juices.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organs.Array.data[3].juices.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: organs.Array.data[0].health
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: organs.Array.data[1].health
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: organs.Array.data[2].health
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: organs.Array.data[3].health
-      value: 100
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organs.Array.data[1].producer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organs.Array.data[0].producer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organs.Array.data[0].juices.Array.data[0].amount
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organs.Array.data[0].juices.Array.data[1].type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organs.Array.data[0].juices.Array.data[1].amount
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organs.Array.data[0].juices.Array.data[2].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organs.Array.data[0].juices.Array.data[0].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organs.Array.data[0].organType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organs.Array.data[0].juices.Array.data[2].amount
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organs.Array.data[1].organType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organs.Array.data[1].juices.Array.data[0].type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organs.Array.data[1].juices.Array.data[0].amount
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organs.Array.data[1].juices.Array.data[1].amount
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organs.Array.data[1].juices.Array.data[2].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organs.Array.data[1].juices.Array.data[2].amount
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organs.Array.data[2].producer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organs.Array.data[2].organType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organs.Array.data[2].juices.Array.data[0].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organs.Array.data[2].juices.Array.data[0].amount
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organs.Array.data[2].juices.Array.data[1].amount
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organs.Array.data[2].juices.Array.data[2].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organs.Array.data[2].juices.Array.data[2].amount
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organs.Array.data[3].producer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organs.Array.data[3].juices.Array.data[0].amount
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organs.Array.data[3].juices.Array.data[1].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organs.Array.data[3].juices.Array.data[1].amount
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organs.Array.data[3].juices.Array.data[2].type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: organs.Array.data[3].juices.Array.data[2].amount
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
