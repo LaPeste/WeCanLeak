@@ -30,7 +30,7 @@ public class StartScreenUI : MonoBehaviour {
 
 	private void OnBodyPartClicked()
 	{
-		Instantiate (bodyUIPrefab);
-		Destroy (bodyPartUIPrefab);
+		Instantiate (bodyPartUIPrefab);
+		Destroy (gameObject);
 	}
 }
