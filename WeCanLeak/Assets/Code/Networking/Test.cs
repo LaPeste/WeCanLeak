@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Test : MonoBehaviour {
 
-	public int Value1 = 1;
+	public float Value1 = 1;
 	// Use this for initialization
 	void Start () {
 	

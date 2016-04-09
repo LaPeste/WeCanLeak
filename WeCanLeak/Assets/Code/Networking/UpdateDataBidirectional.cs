@@ -2,10 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class UpdateDataBidirectional : Photon.PunBehaviour, IPunObservable {
+[RequireComponent(typeof (PhotonView))]
+public class UpdateDataBidirectional : Photon.MonoBehaviour, IPunObservable {
 
-	Test t;
 	public int ValueToShow;
+	private int t;
 
 	void Start()
 	{
@@ -13,17 +14,14 @@ public class UpdateDataBidirectional : Photon.PunBehaviour, IPunObservable {
 
 	// Update is called once per frame
 	void Update () {
-	
 	}
 
 	public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
 	{
-
-		Debug.LogWarning ("whole body sending");
 		if (stream.isWriting) //whole body
 		{
 //			We own this player: send the others our data
-			stream.SendNext((int)t.Value1);
+			stream.SendNext(1);
 			//			stream.SendNext(transform.position);
 			//			stream.SendNext(transform.rotation);
 			Debug.LogWarning ("whole body sending");
@@ -31,13 +29,17 @@ public class UpdateDataBidirectional : Photon.PunBehaviour, IPunObservable {
 		else //body part
 		{
 			//Network player, receive data
-			t.Value1 = (int)stream.ReceiveNext();
+			t = (int)stream.ReceiveNext();
+			t++;
 			//			correctPlayerPos = (Vector3)stream.ReceiveNext();
 			//			correctPlayerRot = (Quaternion)stream.ReceiveNext();
-			Debug.LogWarning ("body part receiving");
+			Debug.LogWarning ("The value received is " + t + " ****************");
 		}
 	}
 
-
+	void OnGUI()
+	{
+		GUI.Label (new Rect(5, 200, 50, 50), ("t = " + t));
+	}
 
 }
