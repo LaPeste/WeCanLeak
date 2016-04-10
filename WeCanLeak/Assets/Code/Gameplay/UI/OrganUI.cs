@@ -24,7 +24,7 @@ public class OrganUI : MonoBehaviour {
 	private Transform[] liquid4;
 
 	int producerindex;
-	
+
 	public void Initialize(int selectedOrgan)
 	{
 		this.selectedOrgan = selectedOrgan;

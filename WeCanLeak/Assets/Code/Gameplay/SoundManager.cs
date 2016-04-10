@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace Completed
-{
 	public class SoundManager : MonoBehaviour 
 	{
 		public AudioSource efxSource;                   //Drag a reference to the audio source which will play the sound effects.
@@ -58,4 +56,3 @@ namespace Completed
 			efxSource.Play();
 		}
 	}
-}
