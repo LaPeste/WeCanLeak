@@ -10,6 +10,7 @@ public class BodyUI : MonoBehaviour {
 	public float displayTime;
 
 	Dictionary<OrganType, float> organHighlightTimes;
+	Dictionary<OrganType, Color> organColors;
 
 	BodyController controller;
 
@@ -17,6 +18,12 @@ public class BodyUI : MonoBehaviour {
 	{
 		controller = GetComponent<BodyController> ();
 		organHighlightTimes = new Dictionary<OrganType, float> ();
+		organColors = new Dictionary<OrganType, Color> ();
+
+		for (int i=0; i<organObjects.Count; i++) {
+			organObjects [i].enabled = false;
+			organColors.Add((OrganType)i, organObjects[i].color);
+		}
 	}
 
 	public void HighlightOrgan(OrganType organ)
@@ -26,31 +33,39 @@ public class BodyUI : MonoBehaviour {
 		else
 			organHighlightTimes [organ] = Time.realtimeSinceStartup;
 
+		organObjects [(int)organ].enabled = true;
+		organObjects [(int)organ].color = Color.clear;
+
 	}
 
 	void UnhighlightOrgan(OrganType organ)
 	{
 		if (organHighlightTimes.ContainsKey (organ))
 			organHighlightTimes.Remove (organ);
+
+		organObjects [(int)organ].enabled = false;
 	}
 
 	void Update()
 	{
 		List<OrganType> toremove = new List<OrganType> ();
 
-		foreach (KeyValuePair<OrganType, float> organTime in organHighlightTimes) {
-			if(Time.realtimeSinceStartup - organTime.Value <= fadeTime)
+		foreach (KeyValuePair<OrganType, float> organTime in organHighlightTimes) 
+		{
+			float timePassed = Time.realtimeSinceStartup - organTime.Value;
+
+			if(timePassed <= fadeTime)
 			{
-				float fadein = (Time.realtimeSinceStartup - organTime.Value) / fadeTime;
-				organObjects[(int)organTime.Key].color = Color.Lerp(Color.clear, organObjects[(int)organTime.Key].color, fadein);
+				float fadein = timePassed / fadeTime;
+				organObjects[(int)organTime.Key].color = Color.Lerp(Color.clear, organColors[organTime.Key], fadein);
 			}
-			else if(Time.realtimeSinceStartup - organTime.Value >= displayTime &&
-			        Time.realtimeSinceStartup - organTime.Value <= displayTime + fadeTime)
+			else if(timePassed >= fadeTime + displayTime &&
+			        timePassed <= displayTime + fadeTime*2)
 			{
-				float fadeout = (Time.realtimeSinceStartup - organTime.Value) / (displayTime + fadeTime*2);
-				organObjects[(int)organTime.Key].color = Color.Lerp(organObjects[(int)organTime.Key].color, Color.clear, fadeout);
+				float fadeout = (timePassed - fadeTime - displayTime) / fadeTime;
+				organObjects[(int)organTime.Key].color = Color.Lerp(organColors[organTime.Key], Color.clear, fadeout);
 			}
-			else if(Time.realtimeSinceStartup - organTime.Value >= displayTime + fadeTime*2)
+			else if(timePassed >= displayTime + fadeTime*2)
 			{
 				toremove.Add(organTime.Key);
 			}
