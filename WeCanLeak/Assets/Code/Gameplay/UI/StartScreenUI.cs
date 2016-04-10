@@ -12,21 +12,21 @@ public class StartScreenUI : MonoBehaviour {
 
 	public GameObject NetworkObject;
 
-	private NetworkSetup networkScript;
-
-	private int bodyPartTestValue = 0;
-	private int bodyFullTestValue = -1;
+//	private NetworkSetup networkScript;
+//
+//	private int bodyPartTestValue = 0;
+//	private int bodyFullTestValue = -1;
 
 	void Start()
 	{
-		if (NetworkObject != null)
-		{
-			networkScript = NetworkObject.GetComponent<NetworkSetup> ();
-		}
-		else
-		{
-			Debug.LogError ("You haven't assigned NetworkObject!!");
-		}
+//		if (NetworkObject != null)
+//		{
+//			networkScript = NetworkObject.GetComponent<NetworkSetup> ();
+//		}
+//		else
+//		{
+//			Debug.LogError ("You haven't assigned NetworkObject!!");
+//		}
 	}
 
 	private void OnEnable()

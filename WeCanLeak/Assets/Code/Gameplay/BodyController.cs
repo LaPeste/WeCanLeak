@@ -42,15 +42,27 @@ public class BodyController : MonoBehaviour {
 
 	}
 
-	public void RemoveFromPool(JuiceType juiceType, int amount)
+	[PunRPC]
+	public int ReleaseAndUpdateFromPool(JuiceType juiceType, int amount)
 	{
-		if (juicePool.ContainsKey (juiceType))
-			juicePool [juiceType] -= amount;
-
-		if (juicePool [juiceType] < 0)
-			juicePool [juiceType] = 0;
+		int result = juicePool [juiceType];
+		if (juicePool.ContainsKey (juiceType)) 
+		{
+			if(juicePool [juiceType] - amount >= 0)
+			{
+				juicePool [juiceType] -= amount;
+				result = amount;
+			}
+			else
+			{
+				result = juicePool [juiceType];
+				juicePool [juiceType] = 0;
+			}
+		}
+		return result;
 	}
 
+	[PunRPC]
 	public int AmountInPool(JuiceType juiceType)
 	{
 		if (!juicePool.ContainsKey (juiceType))
@@ -61,10 +73,14 @@ public class BodyController : MonoBehaviour {
 	public Color GetPoolColor()
 	{
 		Color ret = Color.black;
+		int inPool = 0;
 
 		foreach (KeyValuePair<JuiceType, int> juice in juicePool) {
-			ret += pureJuiceColors[(int)juice.Key] * (juice.Value / 100);
+			ret += pureJuiceColors[(int)juice.Key] * (juice.Value / 10f);
+			inPool += juice.Value;
 		}
+
+		Debug.Log (inPool);
 
 		return ret;
 	}
@@ -96,7 +112,7 @@ public class BodyController : MonoBehaviour {
 	
 	public void OrganRequestJuice(OrganType organ, JuiceType juice, int amount)
 	{
-		RemoveFromPool (juice, amount);
+		ReleaseAndUpdateFromPool (juice, amount);
 
 		bodyui.HighlightOrgan (organ);
 	}

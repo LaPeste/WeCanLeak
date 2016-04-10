@@ -33,6 +33,15 @@ public class NetworkSetup : Photon.PunBehaviour {
 		}
 		communicationScript = gameObject.GetComponent<UpdateDataBidirectional>();
 		PhotonNetwork.ConnectUsingSettings("v1.0");
+<<<<<<< HEAD
+=======
+
+//		foreach(Component c in ListToAdd)
+//		{
+		Component t = gameObject.GetComponent<UpdateDataBidirectional> ();
+		//photonView.ObservedComponents.Add (t);
+//		}
+>>>>>>> f7ab4797f99d087c82b55d09afa7e8a57c0084b5
 	}
 	
 	// Update is called once per frame
@@ -72,7 +81,7 @@ public class NetworkSetup : Photon.PunBehaviour {
 		Debug.Log ("Client connected to server!");
 	}
 
-	/*void OnGUI()
+	void OnGUI()
 	{
 		GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
 		foreach (RoomInfo game in PhotonNetwork.GetRoomList())
@@ -83,5 +92,5 @@ public class NetworkSetup : Photon.PunBehaviour {
 		GUILayout.Label("Rooms count = " + PhotonNetwork.countOfRooms);
 		GUILayout.Label("Player count in room = " + PhotonNetwork.countOfPlayersInRooms);
 		GUILayout.Label("Player count on Master = " + PhotonNetwork.countOfPlayersOnMaster	);
-	}*/
+	}
 }

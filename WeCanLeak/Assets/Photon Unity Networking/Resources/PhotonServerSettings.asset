@@ -21,6 +21,7 @@ MonoBehaviour:
   JoinLobby: 0
   EnableLobbyStatistics: 0
   RpcList:
+  - AmountInPool
   - Chat
   - ColorRpc
   - DestroyRpc
@@ -34,6 +35,7 @@ MonoBehaviour:
   - PunPickup
   - PunPickupSimple
   - PunRespawn
+  - ReleaseAndUpdateFromPool
   - RequestForPickupTimes
   - TaggedPlayer
   DisableAutoOpenWizard: 1
