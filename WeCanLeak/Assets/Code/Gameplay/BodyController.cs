@@ -52,10 +52,14 @@ public class BodyController : MonoBehaviour {
 	public Color GetPoolColor()
 	{
 		Color ret = Color.black;
+		int inPool = 0;
 
 		foreach (KeyValuePair<JuiceType, int> juice in juicePool) {
-			ret += pureJuiceColors[(int)juice.Key] * (juice.Value / 100f);
+			ret += pureJuiceColors[(int)juice.Key] * (juice.Value / 10f);
+			inPool += juice.Value;
 		}
+
+		Debug.Log (inPool);
 
 		return ret;
 	}
@@ -79,7 +83,7 @@ public class BodyController : MonoBehaviour {
 	
 	public void OrganRequestJuice(OrganType organ, JuiceType juice, int amount)
 	{
-//		RemoveFromPool (juice, amount);
+		ReleaseAndUpdateFromPool (juice, amount);
 
 		bodyui.HighlightOrgan (organ);
 	}
