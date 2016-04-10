@@ -715,8 +715,26 @@ MonoBehaviour:
   - {r: .78039217, g: .90196079, b: .215686277, a: 1}
   - {r: .270588249, g: .152941182, b: .0470588244, a: 1}
   - {r: .874509811, g: 0, b: 0, a: 1}
+  organs: []
   tubes: {fileID: 11421846}
   bodyui: {fileID: 11462750}
+  releaseSound1: {fileID: 8300000, guid: fe8418fadb1a62d439f5dc4f43e26ba6, type: 3}
+  releaseSound2: {fileID: 8300000, guid: a684ab00e82ed6b4bb2f1fb97983e4f8, type: 3}
+  releaseSound3: {fileID: 8300000, guid: e8456f457b8fcc94f9824a54b120b0a4, type: 3}
+  releaseSound4: {fileID: 8300000, guid: 14c9674a54418a843929c4cf618fe476, type: 3}
+  requestSound: {fileID: 0}
+  cellDrySound1: {fileID: 8300000, guid: b681998b26e98fb4a94dd4d5e47e3d5e, type: 3}
+  cellDrySound2: {fileID: 8300000, guid: 1782bd0048ea816469a7af465ca48f14, type: 3}
+  cellDrySound3: {fileID: 8300000, guid: ba5d1a2313cbc244f9bc35f18a187c29, type: 3}
+  cellFullSound: {fileID: 0}
+  damageSound1: {fileID: 8300000, guid: f116f9523285fe240b488a49577fa251, type: 3}
+  damageSound2: {fileID: 8300000, guid: 2e9b418fc583e2f489334bbd2d6cf9a4, type: 3}
+  damageSound3: {fileID: 8300000, guid: f2ef29f1d2091314cadf05bb404d905a, type: 3}
+  damageSound4: {fileID: 8300000, guid: ac84370095228a04d828ca425f06b8ff, type: 3}
+  damageSound5: {fileID: 8300000, guid: 18b03acc9eef4274db50d5528e583af5, type: 3}
+  damageSound6: {fileID: 8300000, guid: e12ae6864519ca84aa1e503d0e0bcc31, type: 3}
+  damageSound7: {fileID: 8300000, guid: 8b079adc5c915714186f7d48149e55a1, type: 3}
+  gameOverSound: {fileID: 8300000, guid: d199b94306be41346ba18dc55b1c27b9, type: 3}
 --- !u!114 &11483936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1298,6 +1316,66 @@ Prefab:
       propertyPath: m_FontData.m_Alignment
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: releaseSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: fe8418fadb1a62d439f5dc4f43e26ba6, type: 3}
+    - target: {fileID: 0}
+      propertyPath: releaseSound3
+      value: 
+      objectReference: {fileID: 8300000, guid: e8456f457b8fcc94f9824a54b120b0a4, type: 3}
+    - target: {fileID: 0}
+      propertyPath: releaseSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: a684ab00e82ed6b4bb2f1fb97983e4f8, type: 3}
+    - target: {fileID: 0}
+      propertyPath: releaseSound4
+      value: 
+      objectReference: {fileID: 8300000, guid: 14c9674a54418a843929c4cf618fe476, type: 3}
+    - target: {fileID: 0}
+      propertyPath: gameOverSound
+      value: 
+      objectReference: {fileID: 8300000, guid: d199b94306be41346ba18dc55b1c27b9, type: 3}
+    - target: {fileID: 0}
+      propertyPath: damageSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: f116f9523285fe240b488a49577fa251, type: 3}
+    - target: {fileID: 0}
+      propertyPath: damageSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 2e9b418fc583e2f489334bbd2d6cf9a4, type: 3}
+    - target: {fileID: 0}
+      propertyPath: damageSound3
+      value: 
+      objectReference: {fileID: 8300000, guid: f2ef29f1d2091314cadf05bb404d905a, type: 3}
+    - target: {fileID: 0}
+      propertyPath: damageSound4
+      value: 
+      objectReference: {fileID: 8300000, guid: ac84370095228a04d828ca425f06b8ff, type: 3}
+    - target: {fileID: 0}
+      propertyPath: damageSound5
+      value: 
+      objectReference: {fileID: 8300000, guid: 18b03acc9eef4274db50d5528e583af5, type: 3}
+    - target: {fileID: 0}
+      propertyPath: damageSound6
+      value: 
+      objectReference: {fileID: 8300000, guid: e12ae6864519ca84aa1e503d0e0bcc31, type: 3}
+    - target: {fileID: 0}
+      propertyPath: damageSound7
+      value: 
+      objectReference: {fileID: 8300000, guid: 8b079adc5c915714186f7d48149e55a1, type: 3}
+    - target: {fileID: 0}
+      propertyPath: cellDrySound1
+      value: 
+      objectReference: {fileID: 8300000, guid: b681998b26e98fb4a94dd4d5e47e3d5e, type: 3}
+    - target: {fileID: 0}
+      propertyPath: cellDrySound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 1782bd0048ea816469a7af465ca48f14, type: 3}
+    - target: {fileID: 0}
+      propertyPath: cellDrySound3
+      value: 
+      objectReference: {fileID: 8300000, guid: ba5d1a2313cbc244f9bc35f18a187c29, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 150322}

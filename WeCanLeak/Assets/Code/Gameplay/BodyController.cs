@@ -19,9 +19,17 @@ public class BodyController : MonoBehaviour {
 	public AudioClip releaseSound3;
 	public AudioClip releaseSound4;
 	public AudioClip requestSound;
-	public AudioClip cellDrySound;
+	public AudioClip cellDrySound1;
+	public AudioClip cellDrySound2;
+	public AudioClip cellDrySound3;
 	public AudioClip cellFullSound;
-	public AudioClip damageSound; //decreasing health
+	public AudioClip damageSound1; //decreasing health
+	public AudioClip damageSound2; //decreasing health
+	public AudioClip damageSound3; //decreasing health
+	public AudioClip damageSound4; //decreasing health
+	public AudioClip damageSound5; //decreasing health
+	public AudioClip damageSound6; //decreasing health
+	public AudioClip damageSound7; //decreasing health
 	public AudioClip gameOverSound;
 
 	public void Awake()
