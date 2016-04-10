@@ -49,7 +49,7 @@ public class UpdateDataBidirectional : Photon.MonoBehaviour, IPunObservable {
 	}
 
 	
-	void OnGUI()
+	/*void OnGUI()
 	{
 		GUI.Label (new Rect(5, 200, 100, 50), ("myInt = " + myInt));
 		GUI.Label (new Rect(5, 225, 100, 50), ("sharedInt = " + t));
@@ -59,6 +59,6 @@ public class UpdateDataBidirectional : Photon.MonoBehaviour, IPunObservable {
 			PhotonView photonView = PhotonView.Get(this);
 			photonView.TransferOwnership (PhotonNetwork.player.ID);
 		}
-	}
+	}*/
 	
 }

@@ -72,7 +72,7 @@ public class NetworkSetup : Photon.PunBehaviour {
 		Debug.Log ("Client connected to server!");
 	}
 
-	void OnGUI()
+	/*void OnGUI()
 	{
 		GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
 		foreach (RoomInfo game in PhotonNetwork.GetRoomList())
@@ -83,5 +83,5 @@ public class NetworkSetup : Photon.PunBehaviour {
 		GUILayout.Label("Rooms count = " + PhotonNetwork.countOfRooms);
 		GUILayout.Label("Player count in room = " + PhotonNetwork.countOfPlayersInRooms);
 		GUILayout.Label("Player count on Master = " + PhotonNetwork.countOfPlayersOnMaster	);
-	}
+	}*/
 }

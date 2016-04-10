@@ -54,7 +54,7 @@ public class BodyController : MonoBehaviour {
 		Color ret = Color.black;
 
 		foreach (KeyValuePair<JuiceType, int> juice in juicePool) {
-			ret += pureJuiceColors[(int)juice.Key] * (juice.Value / 100);
+			ret += pureJuiceColors[(int)juice.Key] * (juice.Value / 100f);
 		}
 
 		return ret;
