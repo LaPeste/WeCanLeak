@@ -24,8 +24,7 @@ public class OrganUI : MonoBehaviour {
 	private Transform[] liquid4;
 
 	int producerindex;
-
-
+	
 	public void Initialize(int selectedOrgan)
 	{
 		this.selectedOrgan = selectedOrgan;
@@ -54,6 +53,7 @@ public class OrganUI : MonoBehaviour {
 		for (int i = 0; i < _liquid.Length; i++)
 		{
 			_liquid[i] = _liquid[i].gameObject.transform.GetChild(0).GetChild(i).transform;
+			Debug.Log(_liquid[i]);
 		}
 		return _liquid;
 	}
