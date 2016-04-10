@@ -27,6 +27,24 @@ public class OrganUI : MonoBehaviour {
 
 	int producerindex;
 
+	public AudioClip releaseSound1;
+	public AudioClip releaseSound2;
+	public AudioClip releaseSound3;
+	public AudioClip releaseSound4;
+	public AudioClip requestSound;
+	public AudioClip cellDrySound1;
+	public AudioClip cellDrySound2;
+	public AudioClip cellDrySound3;
+	public AudioClip cellFullSound;
+	public AudioClip damageSound1; //decreasing health
+	public AudioClip damageSound2; //decreasing health
+	public AudioClip damageSound3; //decreasing health
+	public AudioClip damageSound4; //decreasing health
+	public AudioClip damageSound5; //decreasing health
+	public AudioClip damageSound6; //decreasing health
+	public AudioClip damageSound7; //decreasing health
+	public AudioClip gameOverSound;
+
 	public void Initialize(int selectedOrgan)
 	{
 		this.selectedOrgan = selectedOrgan;
@@ -113,7 +131,7 @@ public class OrganUI : MonoBehaviour {
 					_liquid[i].localScale = new Vector3(_liquid[i].localScale.x, _liquid[i].localScale.y - 0.01f, _liquid[i].localScale.z);
 				}
 //				StartCoroutine(NetworkComm.Instance.RequestJuice((JuiceType) _thisProducerIndex, juicePerTap, OnRequestFinished));
-				NetworkComm.ReleaseJuice( (JuiceType) _thisProducerIndex, juicePerTap ); //release it
+				NetworkComm.ReleaseJuice( (JuiceType) _thisProducerIndex, juicePerTap ); //release it		
 			}
 			else //if not, request _thisProducerIndex
 			{
@@ -129,6 +147,7 @@ public class OrganUI : MonoBehaviour {
 				}
 			}
 		}
+		SoundManager.instance.RandomizeSfx(releaseSound1, releaseSound2, releaseSound3, releaseSound4);
 		else{
 			//TODO: Your organ is fucking dead :(
 		}

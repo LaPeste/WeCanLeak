@@ -102,13 +102,13 @@ public class BodyController : MonoBehaviour {
 
 	public void UpdateOrganHealth(OrganType organ, int health)
 	{
-		if (health < 0)
+		if (health <= 0)
 			GameOver ();
 	}
 
 	public void OrganHealthUpdated(OrganType organ, int health)
 	{
-		if (health < 0)
+		if (health <= 0)
 			GameOver ();
 	}
 	
