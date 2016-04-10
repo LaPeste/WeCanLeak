@@ -146,8 +146,8 @@ public class OrganUI : MonoBehaviour {
 					}
 				}
 			}
+			SoundManager.instance.RandomizeSfx(releaseSound1, releaseSound2, releaseSound3, releaseSound4);
 		}
-		SoundManager.instance.RandomizeSfx(releaseSound1, releaseSound2, releaseSound3, releaseSound4);
 		else{
 			//TODO: Your organ is fucking dead :(
 		}
