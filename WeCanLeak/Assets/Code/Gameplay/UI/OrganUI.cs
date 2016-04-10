@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 public class OrganUI : MonoBehaviour {
 
@@ -99,16 +100,21 @@ public class OrganUI : MonoBehaviour {
 			if (producerindex == _thisProducerIndex) //if this organ produces _thisProducerIndex
 			{
 				organ.health --;
+//				Action<int> OnRequestFinished = (int receivedValue) => {
+////					organ.juices[_thisProducerIndex].amount -= juicePerTap;
+//					organ.juices[_thisProducerIndex].amount -= receivedValue;
+//				};
 				organ.juices[_thisProducerIndex].amount -= juicePerTap;
 				for(int i = 0; i < _liquid.Length; i++) // Decreases the liquid level in the container
 				{
 					_liquid[i].localScale = new Vector3(_liquid[i].localScale.x, _liquid[i].localScale.y - 0.01f, _liquid[i].localScale.z);
 				}
-				NetworkComm.ReleaseJuice( (JuiceType) _thisProducerIndex ); //release it
+//				StartCoroutine(NetworkComm.Instance.RequestJuice((JuiceType) _thisProducerIndex, juicePerTap, OnRequestFinished));
+				NetworkComm.ReleaseJuice( (JuiceType) _thisProducerIndex, juicePerTap ); //release it
 			}
 			else //if not, request _thisProducerIndex
 			{
-				if (NetworkComm.RequestJuice( (JuiceType) _thisProducerIndex )) //might not be available in the pool right now
+				if (NetworkComm.Instance.RequestJuice( (JuiceType) _thisProducerIndex )) //might not be available in the pool right now
 				{
 					organ.health++;
 					organ.juices[_thisProducerIndex].amount += juicePerTap;

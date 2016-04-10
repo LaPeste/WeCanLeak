@@ -33,12 +33,6 @@ public class NetworkSetup : Photon.PunBehaviour {
 		}
 		communicationScript = gameObject.GetComponent<UpdateDataBidirectional>();
 		PhotonNetwork.ConnectUsingSettings("v1.0");
-
-//		foreach(Component c in ListToAdd)
-//		{
-		Component t = gameObject.GetComponent<UpdateDataBidirectional> ();
-		//photonView.ObservedComponents.Add (t);
-//		}
 	}
 	
 	// Update is called once per frame
