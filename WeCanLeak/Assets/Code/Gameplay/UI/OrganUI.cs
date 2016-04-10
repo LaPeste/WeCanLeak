@@ -16,7 +16,8 @@ public class OrganUI : MonoBehaviour {
 	private int yellowIndex = 1;
 	private int blackIndex = 2;
 	private int bloodIndex = 3;
-
+		
+	private int flaskFillPercentage;
 	private int selectedOrgan;
 
 	private Transform[] liquid1;
@@ -29,6 +30,7 @@ public class OrganUI : MonoBehaviour {
 	public void Initialize(int selectedOrgan)
 	{
 		this.selectedOrgan = selectedOrgan;
+		flaskFillPercentage = 50;
 
 		liquid1 = InitializeLiquids(liquid1, juice1);
 		liquid2 = InitializeLiquids(liquid2, juice2);
@@ -43,7 +45,7 @@ public class OrganUI : MonoBehaviour {
 		for (int i = 0; i < _liquid.Length; i++)
 		{
 			_liquid[i] = _juice.gameObject.transform.GetChild(0).GetChild(i).transform;
-			_liquid[i].localScale = new Vector3(1f, 0.5f, 1f); // Levels of liquid initialized at half
+			_liquid[i].localScale = new Vector3(1f, flaskFillPercentage/100, 1f); // Levels of liquid initialized at half
 			Debug.Log(_liquid[i]);
 		}
 		return _liquid;
@@ -99,7 +101,8 @@ public class OrganUI : MonoBehaviour {
 		{
 			if (producerindex == _thisProducerIndex) //if this organ produces _thisProducerIndex
 			{
-				organ.health --;
+				flaskFillPercentage --;
+				CheckOrganHealth();
 //				Action<int> OnRequestFinished = (int receivedValue) => {
 ////					organ.juices[_thisProducerIndex].amount -= juicePerTap;
 //					organ.juices[_thisProducerIndex].amount -= receivedValue;
@@ -116,7 +119,8 @@ public class OrganUI : MonoBehaviour {
 			{
 				if (NetworkComm.Instance.RequestJuice( (JuiceType) _thisProducerIndex )) //might not be available in the pool right now
 				{
-					organ.health++;
+					flaskFillPercentage ++;
+					CheckOrganHealth();
 					organ.juices[_thisProducerIndex].amount += juicePerTap;
 					for(int i = 0; i < _liquid.Length; i++) // Increases the liquid level in the container
 					{
@@ -130,6 +134,18 @@ public class OrganUI : MonoBehaviour {
 		}
 	}
 
+
+	private void CheckOrganHealth()
+	{
+		if (flaskFillPercentage < 25 || flaskFillPercentage > 75)
+		{
+			organ.health = organ.health - 2;
+		}
+		else 
+		{
+			organ.health = organ.health + 2;
+		}
+	}
 
 
 }
