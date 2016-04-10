@@ -102,7 +102,7 @@ public class OrganUI : MonoBehaviour {
 			if (producerindex == _thisProducerIndex) //if this organ produces _thisProducerIndex
 			{
 				flaskFillPercentage --;
-				CheckOrganHealth();
+				SetOrganHealth();
 //				Action<int> OnRequestFinished = (int receivedValue) => {
 ////					organ.juices[_thisProducerIndex].amount -= juicePerTap;
 //					organ.juices[_thisProducerIndex].amount -= receivedValue;
@@ -120,7 +120,7 @@ public class OrganUI : MonoBehaviour {
 				if (NetworkComm.Instance.RequestJuice( (JuiceType) _thisProducerIndex )) //might not be available in the pool right now
 				{
 					flaskFillPercentage ++;
-					CheckOrganHealth();
+					SetOrganHealth();
 					organ.juices[_thisProducerIndex].amount += juicePerTap;
 					for(int i = 0; i < _liquid.Length; i++) // Increases the liquid level in the container
 					{
@@ -135,7 +135,7 @@ public class OrganUI : MonoBehaviour {
 	}
 
 
-	private void CheckOrganHealth()
+	private void SetOrganHealth()
 	{
 		if (flaskFillPercentage < 25 || flaskFillPercentage > 75)
 		{
