@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -47,57 +48,62 @@ public class OrganUI : MonoBehaviour {
 	
 	private void OnJuice1Clicked()
 	{
-		if (producerindex == phlegmIndex) //if this organ produces phlegm...
-		{
-			organ.juices[phlegmIndex].amount -= juicePerTap;
-			NetworkComm.ReleaseJuice(JuiceType.Phlegm); //release it
-		}
-		else //if not, request phlegm
-		{
-			if (NetworkComm.RequestJuice(JuiceType.Phlegm)) //might not be available in the pool right now
-				organ.juices[phlegmIndex].amount += juicePerTap;
-		}
+//		if (producerindex == phlegmIndex) //if this organ produces phlegm...
+//		{
+//			organ.juices[phlegmIndex].amount -= juicePerTap;
+//			NetworkComm.ReleaseJuice(JuiceType.Phlegm); //release it
+//		}
+//		else //if not, request phlegm
+//		{
+//			if (NetworkComm.RequestJuice(JuiceType.Phlegm)) //might not be available in the pool right now
+//				organ.juices[phlegmIndex].amount += juicePerTap;
+//		}
 	}
 
 	private void OnJuice2Clicked()
 	{
 		if (producerindex == yellowIndex)
 		{
-			organ.juices[yellowIndex].amount -= juicePerTap;
-			NetworkComm.ReleaseJuice(JuiceType.YellowBile);
+			Action<int> OnRequestFinished = (int receivedValue) => {
+				organ.juices[yellowIndex].amount -= receivedValue;
+			};
+			StartCoroutine(NetworkComm.Instance.RequestJuice(JuiceType.YellowBile, juicePerTap, OnRequestFinished));
 		} 
 		else
 		{
-			if (NetworkComm.RequestJuice(JuiceType.YellowBile))
-				organ.juices[yellowIndex].amount += juicePerTap;
+			Action<int> OnRequestFinished = (int receivedValue) => {
+				organ.juices[yellowIndex].amount += receivedValue;
+			};
+			StartCoroutine(NetworkComm.Instance.RequestJuice(JuiceType.YellowBile, juicePerTap, OnRequestFinished));
+
 		}
 	}
 
 	private void OnJuice3Clicked()
 	{
-		if (producerindex == blackIndex)
-		{
-			organ.juices[blackIndex].amount -= juicePerTap;
-			NetworkComm.ReleaseJuice(JuiceType.BlackBile);
-		} 
-		else
-		{
-			if (NetworkComm.RequestJuice(JuiceType.BlackBile))
-				organ.juices[blackIndex].amount += juicePerTap;
-		}
+//		if (producerindex == blackIndex)
+//		{
+//			organ.juices[blackIndex].amount -= juicePerTap;
+//			NetworkComm.ReleaseJuice(JuiceType.BlackBile);
+//		} 
+//		else
+//		{
+//			if (NetworkComm.RequestJuice(JuiceType.BlackBile))
+//				organ.juices[blackIndex].amount += juicePerTap;
+//		}
 	}
 
 	private void OnJuice4Clicked()
 	{
-		if (producerindex == bloodIndex)
-		{
-			organ.juices[bloodIndex].amount -= juicePerTap;
-			NetworkComm.ReleaseJuice(JuiceType.Blood);
-		} 
-		else
-		{
-			if (NetworkComm.RequestJuice(JuiceType.Blood))
-				organ.juices[bloodIndex].amount += juicePerTap;
-		}
+//		if (producerindex == bloodIndex)
+//		{
+//			organ.juices[bloodIndex].amount -= juicePerTap;
+//			NetworkComm.ReleaseJuice(JuiceType.Blood);
+//		} 
+//		else
+//		{
+//			if (NetworkComm.RequestJuice(JuiceType.Blood))
+//				organ.juices[bloodIndex].amount += juicePerTap;
+//		}
 	}
 }

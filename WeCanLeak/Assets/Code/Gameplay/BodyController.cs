@@ -14,15 +14,27 @@ public class BodyController : MonoBehaviour {
 
 	}
 
-	public void RemoveFromPool(JuiceType juiceType, int amount)
+	[PunRPC]
+	public int ReleaseAndUpdateFromPool(JuiceType juiceType, int amount)
 	{
-		if (juicePool.ContainsKey (juiceType))
-			juicePool [juiceType] -= amount;
-
-		if (juicePool [juiceType] < 0)
-			juicePool [juiceType] = 0;
+		int result = juicePool [juiceType];
+		if (juicePool.ContainsKey (juiceType)) 
+		{
+			if(juicePool [juiceType] - amount >= 0)
+			{
+				juicePool [juiceType] -= amount;
+				result = amount;
+			}
+			else
+			{
+				result = juicePool [juiceType];
+				juicePool [juiceType] = 0;
+			}
+		}
+		return result;
 	}
 
+	[PunRPC]
 	public int AmountInPool(JuiceType juiceType)
 	{
 		if (!juicePool.ContainsKey (juiceType))
