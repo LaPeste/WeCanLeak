@@ -40,6 +40,11 @@ public class NetworkComm : Photon.MonoBehaviour
 			onFinished (receivedResources);
 	}
 
+	public bool RequestJuice (JuiceType juiceType)
+	{
+		return true;
+	}
+
 	public static void ReleaseJuice (JuiceType juiceType, int amountToRequest)
 	{
 //		var juiceToSend = new OrganJuiceReleaseData{juiceReleasedData = new Juice{type = juiceType, amount = amountToRequest}};

@@ -79,7 +79,7 @@ public class BodyController : MonoBehaviour {
 	
 	public void OrganRequestJuice(OrganType organ, JuiceType juice, int amount)
 	{
-		RemoveFromPool (juice, amount);
+//		RemoveFromPool (juice, amount);
 
 		bodyui.HighlightOrgan (organ);
 	}
