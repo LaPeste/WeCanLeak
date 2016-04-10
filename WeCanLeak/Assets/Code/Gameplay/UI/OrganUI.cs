@@ -29,17 +29,6 @@ public class OrganUI : MonoBehaviour {
 	{
 		this.selectedOrgan = selectedOrgan;
 
-
-		//Initializing the liquids
-		for (int i = 0; i < 4; i++)
-		{
-
-			for (int j = 0; j < liquid1.Length; j++)
-			{
-
-			}
-		}
-
 		liquid1 = InitializeLiquids(liquid1, juice1);
 		liquid2 = InitializeLiquids(liquid2, juice2);
 		liquid3 = InitializeLiquids(liquid3, juice3);
@@ -52,7 +41,8 @@ public class OrganUI : MonoBehaviour {
 		_liquid = new Transform[3];
 		for (int i = 0; i < _liquid.Length; i++)
 		{
-			_liquid[i] = _liquid[i].gameObject.transform.GetChild(0).GetChild(i).transform;
+			_liquid[i] = _juice.gameObject.transform.GetChild(0).GetChild(i).transform;
+			_liquid[i].localScale = new Vector3(1f, 0.5f, 1f); // Levels of liquid initialized at half
 			Debug.Log(_liquid[i]);
 		}
 		return _liquid;
@@ -112,7 +102,7 @@ public class OrganUI : MonoBehaviour {
 				organ.juices[_thisProducerIndex].amount -= juicePerTap;
 				for(int i = 0; i < _liquid.Length; i++) // Decreases the liquid level in the container
 				{
-					_liquid[i].localScale = new Vector3(0, _liquid[i].localScale.y - 0.1f, 0);
+					_liquid[i].localScale = new Vector3(_liquid[i].localScale.x, _liquid[i].localScale.y - 0.01f, _liquid[i].localScale.z);
 				}
 				NetworkComm.ReleaseJuice( (JuiceType) _thisProducerIndex ); //release it
 			}
@@ -124,7 +114,7 @@ public class OrganUI : MonoBehaviour {
 					organ.juices[_thisProducerIndex].amount += juicePerTap;
 					for(int i = 0; i < _liquid.Length; i++) // Increases the liquid level in the container
 					{
-						_liquid[i].localScale = new Vector3(0, _liquid[i].localScale.y + 0.1f, 0);
+						_liquid[i].localScale = new Vector3(_liquid[i].localScale.x, _liquid[i].localScale.y + 0.01f, _liquid[i].localScale.z);
 					}
 				}
 			}
