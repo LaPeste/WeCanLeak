@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -10,7 +9,7 @@ public class OrganUI : MonoBehaviour {
 	public Button juice3;
 	public Button juice4;
 	private Organ organ;
-	public int juicePerTap = 10; //amount of juice that is requested or, respectively, released per tap
+	public int juicePerTap = 1; //amount of juice that is requested or, respectively, released per tap
 
 	private int phlegmIndex = 0;
 	private int yellowIndex = 1;
@@ -19,11 +18,34 @@ public class OrganUI : MonoBehaviour {
 
 	private int selectedOrgan;
 
-	int producerindex;
+	private Transform[] liquid1;
+	private Transform[] liquid2;
+	private Transform[] liquid3;
+	private Transform[] liquid4;
 
+	int producerindex;
+	
 	public void Initialize(int selectedOrgan)
 	{
 		this.selectedOrgan = selectedOrgan;
+
+		liquid1 = InitializeLiquids(liquid1, juice1);
+		liquid2 = InitializeLiquids(liquid2, juice2);
+		liquid3 = InitializeLiquids(liquid3, juice3);
+		liquid4 = InitializeLiquids(liquid4, juice4);
+
+	}
+
+	private Transform[] InitializeLiquids(Transform[] _liquid, Button _juice)
+	{
+		_liquid = new Transform[3];
+		for (int i = 0; i < _liquid.Length; i++)
+		{
+			_liquid[i] = _juice.gameObject.transform.GetChild(0).GetChild(i).transform;
+			_liquid[i].localScale = new Vector3(1f, 0.5f, 1f); // Levels of liquid initialized at half
+			Debug.Log(_liquid[i]);
+		}
+		return _liquid;
 	}
 
 	private void OnEnable()
@@ -45,65 +67,63 @@ public class OrganUI : MonoBehaviour {
 		juice2.onClick.RemoveListener (OnJuice3Clicked);
 		juice2.onClick.RemoveListener (OnJuice4Clicked);
 	}
+
+	//==================================================================
 	
-	private void OnJuice1Clicked()
+	public void OnJuice1Clicked()
 	{
-//		if (producerindex == phlegmIndex) //if this organ produces phlegm...
-//		{
-//			organ.juices[phlegmIndex].amount -= juicePerTap;
-//			NetworkComm.ReleaseJuice(JuiceType.Phlegm); //release it
-//		}
-//		else //if not, request phlegm
-//		{
-//			if (NetworkComm.RequestJuice(JuiceType.Phlegm)) //might not be available in the pool right now
-//				organ.juices[phlegmIndex].amount += juicePerTap;
-//		}
+		CalculateJuices(phlegmIndex, liquid1);
 	}
 
-	private void OnJuice2Clicked()
+	public void OnJuice2Clicked()
 	{
-		if (producerindex == yellowIndex)
-		{
-			Action<int> OnRequestFinished = (int receivedValue) => {
-				organ.juices[yellowIndex].amount -= receivedValue;
-			};
-			StartCoroutine(NetworkComm.Instance.RequestJuice(JuiceType.YellowBile, juicePerTap, OnRequestFinished));
-		} 
-		else
-		{
-			Action<int> OnRequestFinished = (int receivedValue) => {
-				organ.juices[yellowIndex].amount += receivedValue;
-			};
-			StartCoroutine(NetworkComm.Instance.RequestJuice(JuiceType.YellowBile, juicePerTap, OnRequestFinished));
+		CalculateJuices(yellowIndex, liquid2);
+	}
 
+	public void OnJuice3Clicked()
+	{
+		CalculateJuices(blackIndex, liquid3);
+	}
+
+	public void OnJuice4Clicked()
+	{
+		CalculateJuices(bloodIndex, liquid4);
+	}
+
+	//==================================================================
+
+	private void CalculateJuices(int _thisProducerIndex, Transform[] _liquid)
+	{
+		if(organ.health > 0)
+		{
+			if (producerindex == _thisProducerIndex) //if this organ produces _thisProducerIndex
+			{
+				organ.health --;
+				organ.juices[_thisProducerIndex].amount -= juicePerTap;
+				for(int i = 0; i < _liquid.Length; i++) // Decreases the liquid level in the container
+				{
+					_liquid[i].localScale = new Vector3(_liquid[i].localScale.x, _liquid[i].localScale.y - 0.01f, _liquid[i].localScale.z);
+				}
+				NetworkComm.ReleaseJuice( (JuiceType) _thisProducerIndex ); //release it
+			}
+			else //if not, request _thisProducerIndex
+			{
+				if (NetworkComm.RequestJuice( (JuiceType) _thisProducerIndex )) //might not be available in the pool right now
+				{
+					organ.health++;
+					organ.juices[_thisProducerIndex].amount += juicePerTap;
+					for(int i = 0; i < _liquid.Length; i++) // Increases the liquid level in the container
+					{
+						_liquid[i].localScale = new Vector3(_liquid[i].localScale.x, _liquid[i].localScale.y + 0.01f, _liquid[i].localScale.z);
+					}
+				}
+			}
+		}
+		else{
+			//TODO: Your organ is fucking dead :(
 		}
 	}
 
-	private void OnJuice3Clicked()
-	{
-//		if (producerindex == blackIndex)
-//		{
-//			organ.juices[blackIndex].amount -= juicePerTap;
-//			NetworkComm.ReleaseJuice(JuiceType.BlackBile);
-//		} 
-//		else
-//		{
-//			if (NetworkComm.RequestJuice(JuiceType.BlackBile))
-//				organ.juices[blackIndex].amount += juicePerTap;
-//		}
-	}
 
-	private void OnJuice4Clicked()
-	{
-//		if (producerindex == bloodIndex)
-//		{
-//			organ.juices[bloodIndex].amount -= juicePerTap;
-//			NetworkComm.ReleaseJuice(JuiceType.Blood);
-//		} 
-//		else
-//		{
-//			if (NetworkComm.RequestJuice(JuiceType.Blood))
-//				organ.juices[bloodIndex].amount += juicePerTap;
-//		}
-	}
+
 }
